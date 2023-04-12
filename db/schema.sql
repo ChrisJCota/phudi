@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS phudi_db;
+CREATE DATABASE phudi_db;
