@@ -1,6 +1,7 @@
 const User = require('./User');
 const Restaurant = require('./Restaurant');
 const Reservation = require('./Reservation');
+const { isModuleNamespaceObject } = require('util/types');
 
 User.hasMany(Reservation, {
     foreignKey: 'user_id',
@@ -19,3 +20,5 @@ Restaurant.hasMany(Reservation, {
 Reservation.belongsTo(Restaurant, {
     foreignKey: 'restaurant_id'
 });
+
+module.exports = { User, Restaurant, Reservation }
