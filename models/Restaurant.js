@@ -22,11 +22,11 @@ Restaurant.init(
             allowNull: false,
         },
         time_open: {
-            type: DataType.STRING,
+            type: DataType.TIME,
             allowNull: false,
         },
         time_closed: {
-            type: DataType.STRING,
+            type: DataType.TIME,
             allowNull: false,
         },
         address: {
