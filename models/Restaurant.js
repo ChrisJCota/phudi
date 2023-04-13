@@ -37,7 +37,7 @@ Restaurant.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        country: {
+        state: {
             type: DataTypes.STRING,
             allowNull: false,
         },
