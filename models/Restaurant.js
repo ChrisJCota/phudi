@@ -21,12 +21,12 @@ Restaurant.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        hour_open: {
-            type: DataType.INTEGER,
+        time_open: {
+            type: DataType.TIME,
             allowNull: false,
         },
-        hour_closed: {
-            type: DataType.INTEGER,
+        time_closed: {
+            type: DataType.TIME,
             allowNull: false,
         },
         address: {
@@ -37,7 +37,7 @@ Restaurant.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        country: {
+        state: {
             type: DataTypes.STRING,
             allowNull: false,
         },
