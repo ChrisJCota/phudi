@@ -1,5 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("..config/connection");
+const sequelize = require("../config/connection");
+
+class Reservation extends Model {}
 
 Reservation.init(
   {
