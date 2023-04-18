@@ -59,6 +59,31 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+router.get("/profile", withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const reservationData = await Reservation.findAll({
+      raw: true,
+      where: { user_id: req.session.user_id },
+      include: [
+        {
+          model: Restaurant,
+          attributes: ["name"],
+        },
+      ],
+    });
+
+    console.log(reservationData);
+
+    res.render("profile", {
+      reservations: reservationData,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
 
 /*
