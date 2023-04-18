@@ -138,9 +138,7 @@ router.get("/profile", withAuth, async (req, res) => {
       include: [
         {
           model: Restaurant,
-          attributes: [
-            'name'
-          ],
+          attributes: ["name"],
         },
       ],
     });
@@ -167,4 +165,3 @@ router.get("/profile", withAuth, async (req, res) => {
 // });
 
 module.exports = router;
-
