@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Restaurant, User } = require("../models");
+const { Restaurant, Reservation, User } = require("../models");
 const withAuth = require("../utils/auth");
 
 // GET all galleries for homepage
@@ -23,28 +23,14 @@ router.get("/", async (req, res) => {
 
 // GET one gallery
 // Use the custom middleware before allowing the user to access the gallery
-router.get("/gallery/:id", withAuth, async (req, res) => {
+router.get("/restaurant/:id", async (req, res) => {
   try {
-    const dbGalleryData = await Gallery.findByPk(req.params.id, {
-      include: [
-        {
-          model: Painting,
-          attributes: [
-            "id",
-            "title",
-            "artist",
-            "exhibition_date",
-            "filename",
-            "description",
-          ],
-        },
-      ],
-    });
+    const restaurantData = await Restaurant.findByPk(req.params.id);
 
-    const gallery = dbGalleryData.get({ plain: true });
-    res.render("gallery", { gallery, loggedIn: req.session.loggedIn });
+    const restaurant = restaurantData.get({ plain: true });
+
+    res.render("restaurant", restaurant);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
