@@ -1,34 +1,50 @@
 [
   {
     "party_number": 5,
-    "time": "2023-01-01T20:00:00.000Z"
+    "time": "2023-01-01T20:00:00.000Z",
+    "user_id": 1,
+    "restaurant_id": 1
   },
   {
     "party_number": 2,
-    "time": "2023-02-14T19:00:00.000Z"
+    "time": "2023-02-14T19:00:00.000Z",
+    "user_id": 2,
+    "restaurant_id": 2
   },
   {
     "party_number": 3,
-    "time": "2023-03-17T15:30:00.000Z"
+    "time": "2023-03-17T15:30:00.000Z",
+    "user_id": 1,
+    "restaurant_id": 3
   },
   {
     "party_number": 4,
-    "time": "2023-04-30T20:00:00.000Z"
+    "time": "2023-04-30T20:00:00.000Z",
+    "user_id": 2,
+    "restaurant_id": 4
   },
   {
     "party_number": 2,
-    "time": "2023-05-05T12:00:00.000Z"
+    "time": "2023-05-05T12:00:00.000Z",
+    "user_id": 1,
+    "restaurant_id": 5
   },
   {
     "party_number": 5,
-    "time": "2023-03-03T15:00:00.000Z"
+    "time": "2023-03-03T15:00:00.000Z",
+    "user_id": 2,
+    "restaurant_id": 6
   },
   {
     "party_number": 2,
-    "time": "2023-04-27T18:30:00.000Z"
+    "time": "2023-04-27T18:30:00.000Z",
+    "user_id": 1,
+    "restaurant_id": 7
   },
   {
     "party_number": 5,
-    "time": "2023-05-01T20:00:00.000Z"
+    "time": "2023-05-01T20:00:00.000Z",
+    "user_id": 2,
+    "restaurant_id": 1
   }
-]
+ ] 
