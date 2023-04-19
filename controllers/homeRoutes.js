@@ -21,9 +21,19 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/restaurant/:id", async (req, res) => {
+  try {
+    const restaurantData = await Restaurant.findByPk(req.params.id);
+
+    const restaurant = restaurantData.get({ plain: true });
+
+    res.render("restaurant", restaurant);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 // GET one gallery
 // Use the custom middleware before allowing the user to access the gallery
-
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
@@ -114,7 +124,5 @@ router.get("/profile", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
 
 module.exports = router;
