@@ -23,3 +23,7 @@ header,
   font-weight: bold;
   margin-left: -5px;
 }
+
+.card {
+  border-style: solid;
+}

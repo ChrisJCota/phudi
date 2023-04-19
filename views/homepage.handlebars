@@ -1,14 +1,14 @@
 {{#each restaurants as |restaurant|}}
-  <p><header>
-      {{name}}
+  <div class="card" data-id={{id}}>
+  <header>
+      <h2>{{name}}</h2>
     </header>
-    {{phone}}
-    {{type}}
-    {{time_open}}
-    {{time_closed}}
-    {{address}}
-    {{city}}
-    {{state}}
-    {{zip}}
-  </p>
+    <div class="content">
+    <p>Phone: {{phone}}</p>
+    <p>Type: {{type}}</p>
+    <p>Hours: {{time_open}}:00 AM - {{time_closed}}:00 PM</p>
+    <p>Address: {{address}}, {{city}} {{state}} {{zip}}</p>
+    </div>
+    <footer><a href="/restaurant/{{id}}">Make Reservation</a></footer>
+    </div>
 {{/each}}
