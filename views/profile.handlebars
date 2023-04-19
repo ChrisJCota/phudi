@@ -1,5 +1,6 @@
+{{user.name}}
 {{#each reservations as |reservation|}}
-  <p>Restaurant: {{reservation.name}}</p>
+  <p>Restaurant: {{restaurant.name}}</p>
   <p>Number of People: {{reservation.party_number}}</p>
   <p>Date: {{format_date reservation.time}}</p>
   <p>Time: {{format_time reservation.time}}</p>

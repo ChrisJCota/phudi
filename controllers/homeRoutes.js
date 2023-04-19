@@ -23,6 +23,11 @@ router.get("/", async (req, res) => {
 
 router.get("/restaurant/:id", async (req, res) => {
   try {
+    if (!req.session.logged_in) {
+      res.redirect("/login");
+      return;
+    }
+
     const restaurantData = await Restaurant.findByPk(req.params.id);
 
     const restaurant = restaurantData.get({ plain: true });
@@ -109,6 +114,10 @@ router.get("/profile", withAuth, async (req, res) => {
       include: [
         {
           model: Restaurant,
+          attributes: ["name"],
+        },
+        {
+          model: User,
           attributes: ["name"],
         },
       ],
