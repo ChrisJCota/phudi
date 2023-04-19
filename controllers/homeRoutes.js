@@ -28,11 +28,16 @@ router.get("/restaurant/:id", async (req, res) => {
       return;
     }
 
+    console.log(req.session.logged_in);
+
     const restaurantData = await Restaurant.findByPk(req.params.id);
 
     const restaurant = restaurantData.get({ plain: true });
 
-    res.render("restaurant", restaurant);
+    res.render("restaurant", {
+      restaurant,
+      logged_in: req.session.logged_in
+    });
   } catch (err) {
     res.status(500).json(err);
   }

@@ -1,14 +1,14 @@
 <div class="dish-card">
   <div class="dish-card-header">
   <header>
-      <h2>{{name}}</h2>
+      <h2>{{restaurant.name}}</h2>
     </header>
   </div>
   <div class="card-body">
-    <p>Phone: {{phone}}</p>
-    <p>Type: {{type}}</p>
-    <p>Hours: {{time_open}}:00 AM - {{format_military_time time_closed}}:00 PM</p>
-    <p>Address: {{address}}, {{city}} {{state}} {{zip}}</p>
+    <p>Phone: {{restaurant.phone}}</p>
+    <p>Type: {{restaurant.type}}</p>
+    <p>Hours: {{restaurant.time_open}}:00 AM - {{format_military_time restaurant.time_closed}}:00 PM</p>
+    <p>Address: {{restaurant.address}}, {{restaurant.city}} {{restaurant.state}}</p>
   </div>
 </div>
 
@@ -29,4 +29,4 @@
       </div>
     </form>
 
-    <script src="./js/createReservation.js"></script>
+    <script src="./js/reservation.js"></script>
