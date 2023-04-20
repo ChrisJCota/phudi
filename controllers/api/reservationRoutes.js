@@ -1,17 +1,39 @@
 const router = require("express").Router();
-const { Reservation } = require("../../models");
+const { Reservation, Restaurant, User } = require("../../models");
 const withAuth = require("../../utils/auth");
-
-router.post("/", withAuth, async (req, res) => {
+const emailRequest = require("../../utils/email");
+router.post("/", async (req, res) => {
   try {
     const newReservation = await Reservation.create({
       ...req.body,
       user_id: req.session.user_id,
     });
+    const userData = await User.findByPk(req.session.user_id);
+    const restaurantData = await Restaurant.findByPk(
+      newReservation.restaurant_id
+    );
+    await emailRequest.sendConfirmation(
+      userData,
+      newReservation,
+      restaurantData
+    );
 
     res.status(200).json(newReservation);
   } catch (err) {
+    console.error(err);
     res.status(400).json(err);
+  }
+});
+
+router.get("/:id", withAuth, async (req, res) => {
+  try {
+    const restaurantData = await Restaurant.findByPk(req.params.id);
+
+    const restaurant = restaurantData.get({ plain: true });
+
+    res.render("reservation", restaurant);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
