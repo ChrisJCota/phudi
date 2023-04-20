@@ -7,6 +7,12 @@ const { EMAIL_HOST, EMAIL_PASSWORD } = process.env;
 //send mail from gmail
 //    const UserEmailData = await User.findByPk();
 const sendConfirmation = async (userEmail, reservation, restaurantData) => {
+  const dateFormat = reservation.time.toLocaleDateString();
+  const timeFormat = reservation.time.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   const uEmail = userEmail.email;
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -31,18 +37,17 @@ const sendConfirmation = async (userEmail, reservation, restaurantData) => {
 
   var response = {
     body: {
-      name: "John Appleseed",
-      intro: restaurantData.name,
+      name: userEmail.name,
+      intro: `Get ready for a great meal at ${restaurantData.name}`,
       action: {
-        instructions: reservation.party_number,
+        instructions: `Your reservation at ${restaurantData.name} is confirmed for a party of ${reservation.party_number} on ${dateFormat} at ${timeFormat}.`,
         button: {
           color: "#571313", // Optional action button color
-          text: "Confirm your account",
-          link: "https://github.com/ChrisJCota/phudi",
+          text: "PHÜDI",
+          link: "https://phudireservations.herokuapp.com/",
         },
       },
-      outro:
-        "Need help, or have questions? Just reply to this email, we'd love to help.",
+      outro: `${restaurantData.name}  ${restaurantData.phone}  ${restaurantData.address}  ${restaurantData.city}  ${restaurantData.state}`,
     },
   };
   let mail = MailGenerator.generate(response);
