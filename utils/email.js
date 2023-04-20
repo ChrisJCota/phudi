@@ -1,70 +1,12 @@
+const { Reservation, User, Restaurant } = require("../models");
 const nodemailer = require("nodemailer");
 const Mailgen = require("mailgen");
 
 const { EMAIL_HOST, EMAIL_PASSWORD } = process.env;
 
-const signup = (req, res) => {
-  let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true, // true for 465, false for other ports
-    auth: {
-      user: EMAIL_HOST, // generated ethereal user
-      pass: EMAIL_PASSWORD, // generated ethereal password
-    },
-  });
-  let reservation = `
-{
-  "@context": "http://schema.org",
-  "@type": "FoodEstablishmentReservation",
-  "reservationNumber": "unhbootcamp",
-  "reservationStatus": "http://schema.org/Confirmed",
-  "underName": {
-    "@type": "Person",
-    "name": "Brian Ebel"
-  },
-  "reservationFor": {
-    "@type": "FoodEstablishment",
-    "name": "Phudi",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "34 Sage Way",
-      "addressLocality": "Durham",
-      "addressRegion": "New Hampshire",
-      "postalCode": "03824",
-      "addressCountry": "United States"
-    }
-  },
-  "startTime": "2023-04-20T08:00:00+00:00",
-  "partySize": "2"
-}`;
-
-  let message = {
-    from: '"PHUDI",<phudi.res@gmail.com>', // sender address
-    to: "schema.whitelisting+sample@gmail.com, bcebel@gmail.com", // list of receivers
-    subject: "Your PHUDI Reservation", // Subject line
-    text: "Succesfully Register with us.", // plain text body
-    html: `${reservation}<script type="application/ld+json">${reservation}</script>Holy Cow`,
-  };
-
-  transporter.sendMail(message).then((info) => {
-    return res
-      .status(201)
-      .json({
-        msg: "you should receive an email",
-        info: info.messageId,
-        preview: nodemailer.getTestMessageUrl(info),
-      })
-      .catch((error) => {
-        return res.status(500).json({ error });
-      });
-  });
-};
-
 //send mail from gmail
-const gEmail = (req, res) => {
-  const { userEmail } = req.body;
-
+//    const UserEmailData = await User.findByPk();
+const sendConfirmation = async (userEmail, reservation, restaurantData) => {
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -89,11 +31,9 @@ const gEmail = (req, res) => {
   var response = {
     body: {
       name: "John Appleseed",
-      intro:
-        "Thank you for your reservation at __________! Get ready for an amazing dining experience.",
+      intro: restaurantData.name,
       action: {
-        instructions:
-          "To get started with pressing random buttons, please click here:",
+        instructions: reservation.party_number,
         button: {
           color: "#571313", // Optional action button color
           text: "Confirm your account",
@@ -109,26 +49,16 @@ const gEmail = (req, res) => {
 
   let message = {
     from: EMAIL_HOST,
-    to: userEmail, // list of receivers
+    to: "bcebel@gmail.com", // list of receivers
     subject: "Your Reservation", // Subject line
     text: emailText, // plain text body
     html: mail, // html body
   };
 
-  transporter
-    .sendMail(message)
-    .then(() => {
-      return res.status(201).json({
-        msg: "you should recieve an email",
-      });
-    })
-    .catch((error) => {
-      return res.status(500).json({ error });
-    });
+  await transporter.sendMail(message);
 
   // res.status(201).json("Get Bill Sucessfully");
 };
 module.exports = {
-  signup,
-  gEmail,
+  sendConfirmation,
 };
