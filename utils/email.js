@@ -7,6 +7,7 @@ const { EMAIL_HOST, EMAIL_PASSWORD } = process.env;
 //send mail from gmail
 //    const UserEmailData = await User.findByPk();
 const sendConfirmation = async (userEmail, reservation, restaurantData) => {
+  const uEmail = userEmail.email;
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -49,7 +50,7 @@ const sendConfirmation = async (userEmail, reservation, restaurantData) => {
 
   let message = {
     from: EMAIL_HOST,
-    to: userEmail, // list of receivers
+    to: uEmail, // list of receivers
     subject: "Your Reservation", // Subject line
     text: emailText, // plain text body
     html: mail, // html body
