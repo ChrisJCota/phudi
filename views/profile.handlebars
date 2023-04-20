@@ -1,7 +1,9 @@
-{{user.name}}
+<h2>Reservations for {{user.name}}</h2>
 {{#each reservations as |reservation|}}
-  <p>Restaurant: {{reservation.restaurant.name}}</p>
-  <p>Number of People: {{reservation.party_number}}</p>
-  <p>Date: {{format_date reservation.time}}</p>
-  <p>Time: {{format_time reservation.time}}</p>
+<div class="card">
+  <p><b>Restaurant: </b>{{reservation.restaurant.name}}</p>
+  <p><b>Number of People: </b>{{reservation.party_number}}</p>
+  <p><b>Date: </b>{{format_date reservation.time}}</p>
+  <p><b>Time: </b>{{format_time reservation.time}}</p>
+  </div>
 {{/each}}
