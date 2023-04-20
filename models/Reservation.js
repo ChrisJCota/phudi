@@ -16,7 +16,7 @@ Reservation.init(
       allowNull: false,
     },
     time: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     user_id: {
