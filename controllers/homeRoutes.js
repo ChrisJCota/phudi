@@ -27,12 +27,15 @@ router.get("/restaurant/:id", async (req, res) => {
       res.redirect("/login");
       return;
     }
-
+  
     const restaurantData = await Restaurant.findByPk(req.params.id);
 
     const restaurant = restaurantData.get({ plain: true });
 
-    res.render("restaurant", restaurant);
+    res.render("restaurant", {
+      restaurant,
+      logged_in: req.session.logged_in
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -110,26 +113,29 @@ router.get("/profile", withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const reservationData = await Reservation.findAll({
       raw: true,
+      nest: true,
       where: { user_id: req.session.user_id },
       include: [
         {
           model: Restaurant,
+          as: 'restaurant',
           attributes: ["name"],
         },
         {
           model: User,
+          as: 'user',
           attributes: ["name"],
         },
       ],
     });
 
-    console.log(reservationData);
-
     res.render("profile", {
       reservations: reservationData,
+      user: req.session.user,
       logged_in: true,
     });
   } catch (err) {
+    console.error(err);
     res.status(500).json(err);
   }
 });
