@@ -8,7 +8,8 @@
     "address": "383 Congress St",
     "city": "Boston",
     "state": "MA",
-    "zip": "02210"
+    "zip": "02210",
+    "img": "boston-seaport-places-row34.jpg"
   },
   {
     "name": "Sorellina",
@@ -19,7 +20,8 @@
     "address": "1 Huntington Ave",
     "city": "Boston",
     "state": "MA",
-    "zip": "02216"
+    "zip": "02216",
+    "img": "Sorellina.jpeg"
   },
   {
     "name": "O Ya",
@@ -30,7 +32,8 @@
     "address": "9 E St",
     "city": "Boston",
     "state": "MA",
-    "zip": "02111"
+    "zip": "02111",
+    "img": "O-Ya.jpeg"
   },
   {
     "name": "Bostonia Public House",
@@ -41,7 +44,8 @@
     "address": "131 State St",
     "city": "Boston",
     "state": "MA",
-    "zip": "02109"
+    "zip": "02109",
+    "img": "Bostonia-public-house.jpeg"
   },
   {
     "name": "Table Boston",
@@ -52,7 +56,8 @@
     "address": "445 Hanover St",
     "city": "Boston",
     "state": "MA",
-    "zip": "02113"
+    "zip": "02113",
+    "img": "Table-Boston-Outside.jpeg"
   },
   {
     "name": "Toro",
@@ -63,7 +68,8 @@
     "address": "1704 Washington St",
     "city": "Boston",
     "state": "MA",
-    "zip": "02118"
+    "zip": "02118",
+    "img": "Toro.jpeg"
   },
   {
     "name": "Thai Basil",
@@ -74,7 +80,8 @@
     "address": "132 Newbury St",
     "city": "Boston",
     "state": "MA",
-    "zip": "02116"
+    "zip": "02116",
+    "img": "thai-basil.jpeg"
   },
   {
     "name": "Sweet Cheeks Q",
@@ -85,6 +92,7 @@
     "address": "1381 Boylston St",
     "city": "Boston",
     "state": "MA",
-    "zip": "02215"
+    "zip": "02215",
+    "img": "sweet-cheeks-q.jpeg"
   }
 ]

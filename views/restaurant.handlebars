@@ -12,21 +12,20 @@
   </div>
 </div>
 
-    <h2>Make Reservation</h2>
+<h2>Make Reservation</h2>
 
-    <form class="form reservation-form">
-      <div class="form-group">
-        <label for="party-number">Number of People:</label>
-        <input class="form-input" type="number" id="party-number" />
-      </div>
-      <div class="form-group">
-        <label for="time">Time:</label>
-        <input class="form-input" type="datetime-local" id="time" />
-      </div>
-      <div class="form-group">
-        <input type="hidden" id="restaurant_id" name="restaurant_id" value={{id}}>
-        <button class="btn btn-primary" type="submit">Create Reservation</button>
-      </div>
-    </form>
-
+<form class="form reservation-form">
+  <div class="form-group">
+    <label for="party-number">Number of People:</label>
+    <input class="form-input" type="number" id="party-number" />
+  </div>
+  <div class="form-group">
+    <label for="time">Time:</label>
+    <input class="form-input" type="datetime-local" id="time" />
+  </div>
+  <div class="form-group">
+    <input type="hidden" id="restaurant_id" name="restaurant_id" value={{id}}>
+    <button class="btn btn-primary" type="submit">Create Reservation</button>
+  </div>
+</form>
     <script src="./js/reservation.js"></script>

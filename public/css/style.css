@@ -8,14 +8,16 @@ header,
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #1b89bc;
+  color: white;
   text-decoration: none;
   font-size: 100%;
 }
 
 .no-button:hover {
-  color: #065b83;
+  color: whitesmoke;
   text-decoration: underline;
+  size: large;
+  font-weight: bold;
 }
 
 .dollar-amount {
@@ -24,6 +26,16 @@ header,
   margin-left: -5px;
 }
 
-.card {
-  border-style: solid;
+footer a {
+  color: #3b628d;
+
 }
+
+footer a:hover {
+  font-size: medium;
+  font-weight: bold;
+}
+
+/* .card {
+  border-style: solid 1px black;
+} */
