@@ -2,7 +2,7 @@ const router = require("express").Router();
 const userRoutes = require("./userRoutes");
 const reservationRoutes = require("./reservationRoutes");
 
-const { signup, gEmail } = require("../email");
+const { signup, gEmail } = require("../../utils/email");
 
 router.use("/users", userRoutes);
 router.use("/reservation", reservationRoutes);
