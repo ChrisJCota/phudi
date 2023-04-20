@@ -2,7 +2,7 @@ const newFormHandler = async (event) => {
   event.preventDefault();
 
   const party_number = document.querySelector("#party_number").value.trim();
-  const time = document.querySelector("#time").value.trim();
+  const time = document.querySelector("#time").value;
   const restaurant_id = document.querySelector("#restaurant_id").value.trim();
   console.log(party_number);
   console.log(time);
