@@ -4,24 +4,19 @@ const newFormHandler = async (event) => {
   const party_number = document.querySelector("#party_number").value.trim();
   const time = document.querySelector("#time").value;
   const restaurant_id = document.querySelector("#restaurant_id").value.trim();
-  console.log(party_number);
-  console.log(time);
-  console.log(restaurant_id);
 
-  if (party_number && time && restaurant_id) {
-    const response = await fetch(`/api/reservation/`, {
-      method: "POST",
-      body: JSON.stringify({ party_number, time, restaurant_id }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+  const response = await fetch(`/api/reservation/`, {
+    method: "POST",
+    body: JSON.stringify({ party_number, time, restaurant_id }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-    if (response.ok) {
-      document.location.replace("/profile");
-    } else {
-      alert("Failed to create project");
-    }
+  if (response.ok) {
+    document.location.replace("/profile");
+  } else {
+    alert("Failed to create project");
   }
 };
 

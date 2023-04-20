@@ -4,12 +4,11 @@ const withAuth = require("../../utils/auth");
 const emailRequest = require("../../utils/email");
 router.post("/", async (req, res) => {
   try {
-    const userData = await User.findByPk(req.session.user_id);
     const newReservation = await Reservation.create({
       ...req.body,
       user_id: req.session.user_id,
     });
-
+    const userData = await User.findByPk(req.session.user_id);
     const restaurantData = await Restaurant.findByPk(
       newReservation.restaurant_id
     );
