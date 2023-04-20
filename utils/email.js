@@ -49,7 +49,7 @@ const sendConfirmation = async (userEmail, reservation, restaurantData) => {
 
   let message = {
     from: EMAIL_HOST,
-    to: "bcebel@gmail.com", // list of receivers
+    to: userEmail, // list of receivers
     subject: "Your Reservation", // Subject line
     text: emailText, // plain text body
     html: mail, // html body

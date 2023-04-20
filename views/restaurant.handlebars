@@ -1,14 +1,19 @@
 <div class="dish-card">
   <div class="dish-card-header">
-  <header>
+    <header>
       <h2>{{restaurant.name}}</h2>
     </header>
   </div>
   <div class="card-body">
     <p>Phone: {{restaurant.phone}}</p>
     <p>Type: {{restaurant.type}}</p>
-    <p>Hours: {{restaurant.time_open}}:00 AM - {{format_military_time restaurant.time_closed}}:00 PM</p>
-    <p>Address: {{restaurant.address}}, {{restaurant.city}} {{restaurant.state}}</p>
+    <p>Hours:
+      {{restaurant.time_open}}:00 AM -
+      {{format_military_time restaurant.time_closed}}:00 PM</p>
+    <p>Address:
+      {{restaurant.address}},
+      {{restaurant.city}}
+      {{restaurant.state}}</p>
   </div>
 </div>
 
@@ -16,16 +21,16 @@
 
 <form class="form reservation-form">
   <div class="form-group">
-    <label for="party-number">Number of People:</label>
-    <input class="form-input" type="number" id="party-number" />
+    <label for="party_number">Number of People:</label>
+    <input class="form-input" type="number" id="party_number" />
   </div>
   <div class="form-group">
     <label for="time">Time:</label>
     <input class="form-input" type="datetime-local" id="time" />
   </div>
   <div class="form-group">
-    <input type="hidden" id="restaurant_id" name="restaurant_id" value={{id}}>
+    <input type="hidden" id="restaurant_id" name="restaurant_id" value={{id}} />
     <button class="btn btn-primary" type="submit">Create Reservation</button>
   </div>
 </form>
-    <script src="./js/reservation.js"></script>
+<script src="../js/reservation.js"></script>
