@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
       newReservation.restaurant_id
     );
     await emailRequest.sendConfirmation(
-      userData.email,
+      userData,
       newReservation,
       restaurantData
     );
@@ -25,6 +25,18 @@ router.post("/", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(400).json(err);
+  }
+});
+
+router.get("/:id", withAuth, async (req, res) => {
+  try {
+    const restaurantData = await Restaurant.findByPk(req.params.id);
+
+    const restaurant = restaurantData.get({ plain: true });
+
+    res.render("reservation", restaurant);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
